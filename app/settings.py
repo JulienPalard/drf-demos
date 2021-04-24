@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "horloge",
     "memcache",
     "file",
+    "uptime",
 ]
 
 MIDDLEWARE = [

@@ -23,6 +23,7 @@ urlpatterns = [
     path("horloge/", include("horloge.urls")),
     path("memcache/", include("memcache.urls")),
     path("files/", include("file.urls")),
+    path("uptime/", include("uptime.urls")),
     path("admin/", admin.site.urls),
     path("__debug__/", include(debug_toolbar.urls)),
     path(
