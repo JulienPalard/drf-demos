@@ -20,6 +20,7 @@ import debug_toolbar
 urlpatterns = [
     path("horloge/", include("horloge.urls")),
     path("memcache/", include("memcache.urls")),
+    path("files/", include("file.urls")),
     path("admin/", admin.site.urls),
     path("__debug__/", include(debug_toolbar.urls)),
 ]
