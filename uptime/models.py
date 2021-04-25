@@ -1,9 +1,15 @@
+import django.contrib.auth.models
 from django.db import models
+
+
+class User(django.contrib.auth.models.AbstractUser):
+    ...
 
 
 class Domain(models.Model):
     domain = models.CharField(max_length=512)
     is_up = models.BooleanField(null=True, blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.domain
