@@ -5,6 +5,9 @@ class Domain(models.Model):
     domain = models.CharField(max_length=512)
     is_up = models.BooleanField(null=True, blank=True)
 
+    def __str__(self):
+        return self.domain
+
 
 class Check(models.Model):
     is_up = models.BooleanField()
@@ -14,3 +17,6 @@ class Check(models.Model):
 
     class Meta:
         ordering = ["-date"]
+
+    def __str__(self):
+        return f"{self.domain.domain} is {'up' if self.is_up else 'down'}"
