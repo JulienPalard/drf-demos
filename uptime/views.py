@@ -34,6 +34,9 @@ class DomainViewSet(ModelViewSet):
     queryset = Domain.objects.all()
     serializer_class = DomainSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 class CheckViewSet(ModelViewSet):
     queryset = Check.objects.all()
