@@ -133,7 +133,20 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"]
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "uptime.auth.DRFAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
 }
 
 AUTH_USER_MODEL = "uptime.User"
+
+JWT_PUBLIC_KEYS = [
+    """-----BEGIN PUBLIC KEY-----
+MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDNoHy+83YWjOkaHPnQE4EFtNFFOE/C0b
+O54UwKM76K/KOMTr4P9/foKUkI+VFFWgFhG7XtnFYxc0nVwu0kkQOA==
+-----END PUBLIC KEY-----
+"""
+]
