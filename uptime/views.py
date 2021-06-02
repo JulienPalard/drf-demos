@@ -1,6 +1,7 @@
 from django.utils.http import urlencode
 from rest_framework.reverse import reverse
 from rest_framework.decorators import api_view
+from rest_framework import permissions
 from rest_framework.serializers import (
     HyperlinkedModelSerializer,
     HyperlinkedIdentityField,
@@ -30,9 +31,23 @@ class CheckSerializer(HyperlinkedModelSerializer):
         fields = "__all__"
 
 
+class IsOwner(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return request.user == obj.owner
+
+
+class IsSafe(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.method in permissions.SAFE_METHODS
+
+    def has_object_permission(self, request, view, obj):
+        return request.method in permissions.SAFE_METHODS
+
+
 class DomainViewSet(ModelViewSet):
     queryset = Domain.objects.all()
     serializer_class = DomainSerializer
+    permission_classes = [IsOwner | IsSafe]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
