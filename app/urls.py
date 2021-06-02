@@ -20,6 +20,7 @@ from rest_framework.schemas import get_schema_view
 import debug_toolbar
 
 urlpatterns = [
+    path("", TemplateView.as_view(template_name="home.html")),
     path("horloge/", include("horloge.urls")),
     path("memcache/", include("memcache.urls")),
     path("files/", include("file.urls")),
