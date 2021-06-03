@@ -1,9 +1,10 @@
 from typing import Tuple, Optional
-
 from django.conf import settings
+from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model
 import jwt
 from rest_framework.authentication import get_authorization_header
+from rest_framework import exceptions
 
 User = get_user_model()
 
