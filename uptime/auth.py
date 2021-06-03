@@ -1,15 +1,19 @@
-from typing import Tuple, Optional
+from typing import Tuple, Optional, TYPE_CHECKING
 from django.conf import settings
 from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model
 import jwt
 from rest_framework.authentication import get_authorization_header
 from rest_framework import exceptions
+from rest_framework.request import Request
 
-User = get_user_model()
+if TYPE_CHECKING:
+    from uptime.models import User
+else:
+    User = get_user_model()
 
 
-def _sync_groups(user, claims):
+def _sync_groups(user: User, claims: dict) -> None:
     if "groups" not in claims:
         return
     current_groups = set(group.name for group in user.groups.all())
@@ -48,7 +52,7 @@ def _decode_jwt(token):
     return jwt.decode(token, settings.JWT_PUBLIC_KEYS[-1], algorithms=["ES256"])
 
 
-def _authenticate(request) -> Optional[Tuple[User, dict]]:
+def _authenticate(request: Request) -> Optional[Tuple[User, dict]]:
     """Can raise jwt.InvalidTokenError."""
     prefix_and_token = get_authorization_header(request).split()
     try:
@@ -64,7 +68,7 @@ def _authenticate(request) -> Optional[Tuple[User, dict]]:
 
 
 class DRFAuthentication:
-    def authenticate(self, request):
+    def authenticate(self, request: Request) -> Optional[Tuple[User, dict]]:
         try:
             return _authenticate(request)
         except jwt.InvalidTokenError as err:
