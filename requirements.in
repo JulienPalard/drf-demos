@@ -1,0 +1,6 @@
+djangorestframework
+django-debug-toolbar
+django-filter
+pyjwt[crypto]
+pytimeparse
+shortuuid

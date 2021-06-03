@@ -68,8 +68,10 @@ def _authenticate(request: Request) -> Optional[Tuple[User, dict]]:
     return user, {**claims, "token": token}
 
 
-class DRFAuthentication:
-    def authenticate(self, request: Request) -> Optional[Tuple[User, dict]]:
+class DRFAuthentication:  # pylint: disable=too-few-public-methods
+    def authenticate(  # pylint: disable=no-self-use
+        self, request: Request
+    ) -> Optional[Tuple[User, dict]]:
         try:
             return _authenticate(request)
         except jwt.InvalidTokenError as err:

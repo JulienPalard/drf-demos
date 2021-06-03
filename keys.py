@@ -1,5 +1,4 @@
-"""Generate JWTs using secp256k1.pem.
-"""
+"""Generate JWTs using secp256k1.pem."""
 
 # Generate a keypair using:
 #

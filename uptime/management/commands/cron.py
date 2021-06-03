@@ -8,7 +8,7 @@ from uptime.models import Check, Domain
 
 
 def get_server_certificate(addr, port=443, timeout=10):
-    """Retrieve the certificate from the server at the specified address" """
+    """Retrieve the certificate from the server at the specified address."""
     context = ssl.create_default_context()
     with socket.create_connection((addr, port), timeout) as sock:
         with context.wrap_socket(sock, server_hostname=addr) as sslsock:

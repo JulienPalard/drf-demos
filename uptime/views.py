@@ -42,7 +42,7 @@ class IsSafe(permissions.BasePermission):
 class DomainViewSet(ModelViewSet):
     queryset = Domain.objects.all()
     serializer_class = DomainSerializer
-    permission_classes = [IsOwner | IsSafe]  # type: ignore
+    permission_classes = [IsOwner | IsSafe]  # type: ignore  # pylint: disable=E1131
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

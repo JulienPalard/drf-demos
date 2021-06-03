@@ -22,8 +22,8 @@ Initial data contains 3 users:
 - [x] flake8 flake8-bugbear
 - [x] pylint pylint-django
 - [x] mypy
-- [ ] black
-- [ ] isort
-- [ ] pydocstyle
-- [ ] bandit
-- [ ] tox
+- [x] black
+- [x] isort
+- [x] pydocstyle
+- [x] bandit
+- [x] tox
