@@ -1,7 +1,7 @@
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from uptime.views import DomainViewSet, CheckViewSet
+from uptime.views import CheckViewSet, DomainViewSet
 
 router = DefaultRouter()
 router.register("domains", DomainViewSet)

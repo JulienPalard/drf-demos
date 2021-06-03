@@ -1,9 +1,10 @@
-from datetime import timedelta, datetime
 import socket
 import ssl
+from datetime import datetime, timedelta
 
 from django.core.management.base import BaseCommand
-from uptime.models import Domain, Check
+
+from uptime.models import Check, Domain
 
 
 def get_server_certificate(addr, port=443, timeout=10):

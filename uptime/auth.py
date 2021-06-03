@@ -1,10 +1,11 @@
-from typing import Tuple, Optional, TYPE_CHECKING
-from django.conf import settings
-from django.contrib.auth.models import Group
-from django.contrib.auth import get_user_model
+from typing import TYPE_CHECKING, Optional, Tuple
+
 import jwt
-from rest_framework.authentication import get_authorization_header
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from rest_framework import exceptions
+from rest_framework.authentication import get_authorization_header
 from rest_framework.request import Request
 
 if TYPE_CHECKING:

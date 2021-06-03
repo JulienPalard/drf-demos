@@ -1,5 +1,6 @@
-from django.contrib.auth.admin import UserAdmin
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+
 import uptime.models
 
 admin.site.register(uptime.models.Check)
