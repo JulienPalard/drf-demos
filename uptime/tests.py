@@ -39,7 +39,7 @@ class TestFromAlice(APITestCase):
         assert len(before) + 1 == len(after)
         self.client.delete(new_one.headers["Location"])
         after_delete = self.client.get("/uptime/domains/").data
-        assert len(before) == len(after_delete)
+        assert before == after_delete
 
     def test_rename_domain(self):
         new_one = self.client.post("/uptime/domains/", {"domain": "arcive.org"})
