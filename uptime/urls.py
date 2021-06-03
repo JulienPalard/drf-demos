@@ -11,4 +11,4 @@ urlpatterns = router.urls
 urlpatterns += [
     path("api-auth/", include("rest_framework.urls")),
 ]
-print(*urlpatterns, sep="\n")
+# print(*urlpatterns, sep="\n")

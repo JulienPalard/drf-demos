@@ -1,3 +1,6 @@
+from datetime import timedelta
+
+from django.utils import timezone
 from django.utils.http import urlencode
 from rest_framework import permissions
 from rest_framework.reverse import reverse
@@ -46,6 +49,12 @@ class DomainViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    def get_object(self):
+        obj = super().get_object()
+        if obj.last_check < timezone.now() - timedelta(minutes=2):
+            obj.refresh()
+        return obj
 
 
 class CheckViewSet(ModelViewSet):
