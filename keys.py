@@ -43,6 +43,7 @@ def main():
                 "sub": args.sub,
                 "exp": datetime.now() + timedelta(seconds=args.exp),
                 "jti": shortuuid.uuid(),
+                **args.claims,
             },
             Path("secp256k1.pem").read_text(),
             algorithm="ES256",
