@@ -15,3 +15,13 @@ Initial data contains 3 users:
 - bob:bob owning bbb.afpy.org
 
 (Notice **a**lice own **a**fpy.org and **b**ob owns **b**bb.afpy.org.)
+
+
+## TODO
+
+- pylint-django
+- flake8
+- mypy
+- black
+- isort
+- tox
