@@ -2,7 +2,7 @@ from datetime import timedelta, datetime
 import socket
 import ssl
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from uptime.models import Domain, Check
 
 
@@ -36,7 +36,8 @@ class Command(BaseCommand):
                 if expire_in < deadline:
                     is_up, message = (
                         False,
-                        "TLS certificate expire in {expire_in.total_seconds() // 86400:.0f} days",
+                        "TLS certificate expire in "
+                        f"{expire_in.total_seconds() // 86400:.0f} days",
                     )
             Check.objects.create(domain=domain, is_up=is_up, message=message)
             domain.is_up = is_up

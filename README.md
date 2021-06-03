@@ -19,9 +19,11 @@ Initial data contains 3 users:
 
 ## TODO
 
-- pylint-django
-- flake8
-- mypy
-- black
-- isort
-- tox
+- [x] flake8 flake8-bugbear
+- [ ] pylint pylint-django
+- [ ] mypy
+- [ ] black
+- [ ] isort
+- [ ] pydocstyle
+- [ ] bandit
+- [ ] tox
