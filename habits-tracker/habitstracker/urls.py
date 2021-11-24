@@ -3,7 +3,8 @@ from rest_framework import routers
 from habitstracker import views
 
 router = routers.DefaultRouter()
-router.register(r"users", views.UserViewSet)
+router.register("users", views.UserViewSet)
+router.register("habits", views.HabitsViewSet, basename="habits")
 
 urlpatterns = [
     path("", include(router.urls)),
